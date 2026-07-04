@@ -158,11 +158,15 @@ These services are not modules; every module depends on them.
 
 ## 8. Open Questions
 
-Deferred to later volumes / decision records:
+Most Volume 1 open questions are now resolved by later volumes:
 
-- Concrete technology choices are recommended in [tech-stack.md](tech-stack.md)
-  but not yet ratified.
+- ~~Concrete technology choices~~ — **ratified** across Volumes 2–5; see the
+  [decision ledger](tech-stack.md).
+- ~~Data residency / per-region deployment~~ — addressed by
+  [multi-region scaling (Vol. 5, Phase 3)](production-operations.md#13-scaling-strategy).
+
+Still open:
+
 - Billing/subscription model for AgencyOS itself (platform monetization).
-- Data residency and per-region deployment strategy.
 - Offline/degraded-connectivity behavior for the portals.
 </content>

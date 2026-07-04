@@ -28,6 +28,7 @@ AgencyOS. Start with the documentation index:
 - [Volume 2 — Database Architecture & Supabase Specification](docs/architecture/database-architecture.md)
 - [Volume 3 — Frontend Architecture & UX Specification](docs/architecture/frontend-architecture.md)
 - [Volume 4 — Backend Architecture, APIs & Integrations](docs/architecture/backend-architecture.md)
+- [Volume 5 — AI, Production, DevOps & Enterprise Operations](docs/architecture/production-operations.md)
 - [System Architecture](docs/architecture/system-architecture.md)
 - [Data Model (conceptual)](docs/architecture/data-model.md)
 - [Permission Matrix](docs/architecture/permission-matrix.md)
@@ -36,7 +37,11 @@ AgencyOS. Start with the documentation index:
 
 ## Status
 
-Pre-development. This branch establishes the canonical product requirements and
-technical architecture that subsequent implementation work will follow.
+Pre-development. The complete **five-volume blueprint** (product, database,
+frontend, backend, and production/operations) is captured under
+[`docs/`](docs/README.md) and the full technology stack is ratified in the
+[decision ledger](docs/architecture/tech-stack.md). Implementation has not yet
+begun; the natural first slice is the Supabase schema (workspaces, profiles,
+roles/permissions, and RLS) from Volume 2.
 </content>
 </invoke>

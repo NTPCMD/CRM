@@ -37,4 +37,8 @@
 | **Adapter**          | The isolation boundary around an external integration (`Connect → Sync → …`) (Vol. 4 §17). |
 | **Modular monolith** | The MVP deployment shape: services as modules in one deployable, extractable later (Vol. 4 §23). |
 | **Idempotency**      | Guarantee that a repeated webhook/request has no additional effect; required for all webhooks (Vol. 4 §18). |
+| **AI Agent**         | A specialized, permission-bound assistant (Project Manager, Finance, CRM, Operations, Meeting) built on the AI Gateway (Vol. 5 §3). |
+| **RPO / RTO**        | Recovery Point Objective (≤15 min of data loss) / Recovery Time Objective (≤1 hr to restore) (Vol. 5 §12). |
+| **MFA**              | Multi-factor authentication, part of the Supabase Auth security posture (Vol. 5 §8). |
+| **Modular monolith → microservices** | The staged scaling path: single deployable MVP → extracted services at enterprise scale (Vol. 4 §23 / Vol. 5 §13). |
 </content>

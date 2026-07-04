@@ -1,12 +1,15 @@
 # AgencyOS — Technology Stack
 
-The **data layer** is ratified by
-[Volume 2](database-architecture.md) (**Supabase / PostgreSQL 17**), the
-**frontend** by [Volume 3](frontend-architecture.md)
-(**Next.js 15 / React 19 / TypeScript**), and the **backend, API, and AI/payment
-choices** by [Volume 4](backend-architecture.md) (**REST + event-driven modular
-monolith, provider-agnostic AI Gateway, Stripe**). Only deployment/CI details
-(Volume 5 scope) remain open. Each choice notes the requirement it serves.
+This is the consolidated decision ledger for the whole stack. It is ratified
+across the five specification volumes: data layer by
+[Volume 2](database-architecture.md) (**Supabase / PostgreSQL 17**), frontend by
+[Volume 3](frontend-architecture.md) (**Next.js 15 / React 19 / TypeScript**),
+backend/API/AI/payments by [Volume 4](backend-architecture.md) (**REST +
+event-driven modular monolith, provider-agnostic AI Gateway, Stripe**), and
+infrastructure/CI/observability by
+[Volume 5](production-operations.md) (**Vercel · Cloudflare · Resend/Postmark ·
+Grafana/Prometheus/Sentry/OpenTelemetry**). Each choice notes the requirement it
+serves.
 
 ## 1. Guiding Constraints
 
@@ -39,6 +42,11 @@ pending ratification. Volume that fixed each choice is noted.
 | Eventing         | **Event-driven** (event catalogue → subscribers) | Ratified (V4) | Decouples notifications, activity, analytics, AI. |
 | AI               | **Provider-agnostic AI Gateway**, default latest Claude models | Ratified (V4) | Swap providers without app changes (V4 §8). |
 | Payments         | **Stripe** (initial), pluggable via Integrations | Ratified (V4) | Confirmed initial provider; adapter-isolated.     |
+| Hosting          | **Vercel** (or self-hosted) for Next.js       | Recommended (V5) | Managed Next.js deploys with preview envs.     |
+| CDN              | **Cloudflare**                    | Recommended (V5) | Edge caching, image optimization.               |
+| Email            | **Resend** or **Postmark**        | Recommended (V5) | Transactional email delivery.                   |
+| Observability    | **Grafana · Prometheus · Sentry · OpenTelemetry** | Recommended (V5) | Metrics, errors, tracing (V5 §10).       |
+| CI/CD            | Merge-to-`main` pipeline with migration validation + gated prod deploy | Ratified (V5) | Tests, preview, approval, deploy (V5 §6). |
 
 ## 3. Tenancy Strategy
 
@@ -79,7 +87,10 @@ app**, not separate apps:
 
 ## 6. Open Decisions
 
-- Decide monorepo tooling (workspaces, build orchestration).
-- Confirm self-hosted vs. Supabase-hosted deployment target.
-- Production infrastructure, CI/CD, and containerization (Volume 5 scope).
+The stack is fully specified across Volumes 1–5. The remaining choices are
+implementation-time details, not architectural gaps:
+
+- Monorepo tooling (workspaces, build orchestration).
+- Confirm Vercel vs. self-hosted deployment target (V5 leaves this optional).
+- Pick Resend vs. Postmark for transactional email.
 </content>

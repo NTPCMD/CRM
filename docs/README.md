@@ -11,7 +11,9 @@ AgencyOS.
 | **2** | [Database Architecture & Supabase Specification](architecture/database-architecture.md) | Authoritative physical data layer: Supabase/PostgreSQL 17, schema, RLS, functions, triggers, views. |
 | **3** | [Frontend Architecture & UX Specification](architecture/frontend-architecture.md) | Authoritative frontend: Next.js/React stack, design system, CEO/Worker/Client portals, components. |
 | **4** | [Backend Architecture, APIs & Integrations](architecture/backend-architecture.md) | Authoritative backend: services, REST APIs, events, Edge Functions, AI Gateway, integrations, webhooks. |
-| 5 | *(planned)* | AI agents, production infra, Docker/CI-CD, testing, security hardening, observability, launch. |
+| **5** | [AI, Production, DevOps & Enterprise Operations](architecture/production-operations.md) | Authoritative operations: AI agents, infra, CI/CD, security, compliance, observability, DR, testing, roadmap. |
+
+The blueprint is complete across all five volumes.
 
 ## Architecture
 
@@ -21,6 +23,7 @@ AgencyOS.
 | [Database Architecture (Vol. 2)](architecture/database-architecture.md) | **Authoritative** physical schema, RLS, functions, triggers, views. |
 | [Frontend Architecture (Vol. 3)](architecture/frontend-architecture.md) | **Authoritative** frontend stack, design system, portals, and components. |
 | [Backend Architecture (Vol. 4)](architecture/backend-architecture.md) | **Authoritative** services, REST APIs, events, Edge Functions, AI Gateway, integrations. |
+| [Production & Operations (Vol. 5)](architecture/production-operations.md) | **Authoritative** AI agents, infra, CI/CD, security, compliance, observability, DR, testing. |
 | [Data Model](architecture/data-model.md) | Conceptual entities and relationships (superseded by Vol. 2 for physical detail). |
 | [Permission Matrix](architecture/permission-matrix.md) | Configurable capability-based authorization model. |
 | [Technology Stack](architecture/tech-stack.md) | Ratified data + frontend stack; open payment/delivery decisions. |
