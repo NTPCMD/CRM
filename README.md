@@ -26,6 +26,7 @@ AgencyOS. Start with the documentation index:
 - **[docs/README.md](docs/README.md)** — documentation index
 - [Volume 1 — Product Requirements & System Architecture](docs/product/prd-volume-1.md)
 - [Volume 2 — Database Architecture & Supabase Specification](docs/architecture/database-architecture.md)
+- [Volume 3 — Frontend Architecture & UX Specification](docs/architecture/frontend-architecture.md)
 - [System Architecture](docs/architecture/system-architecture.md)
 - [Data Model (conceptual)](docs/architecture/data-model.md)
 - [Permission Matrix](docs/architecture/permission-matrix.md)

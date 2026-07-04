@@ -26,4 +26,8 @@
 | **Realtime Engine**  | Service that pushes permission-filtered state changes to connected clients.|
 | **AI Assistant**     | Cross-module assistant, bound by the acting user's permissions.            |
 | **Integration**      | A connection to an external provider (payments, accounting, communication).|
+| **Design System**    | The shared tokens (color, type, spacing) and shadcn/ui component library used by every screen (Vol. 3). |
+| **Command Palette**  | The ⌘K / Ctrl+K universal search-and-action surface. |
+| **Role-gated**       | UI (sidebar, screens) filtered by the user's role and effective permissions. |
+| **Server state / UI state** | Data from Supabase (owned by TanStack Query) vs. ephemeral interface state (owned by Zustand). |
 </content>

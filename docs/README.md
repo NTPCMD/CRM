@@ -9,7 +9,8 @@ AgencyOS.
 | ------ | -------- | ----------- |
 | **1** | [Product Requirements & System Architecture](product/prd-volume-1.md) | Vision, goals, personas, roles, modules, and success metrics. |
 | **2** | [Database Architecture & Supabase Specification](architecture/database-architecture.md) | Authoritative physical data layer: Supabase/PostgreSQL 17, schema, RLS, functions, triggers, views. |
-| 3 | *(planned)* | Maps every entity to the CEO / Worker / Client portal UX. |
+| **3** | [Frontend Architecture & UX Specification](architecture/frontend-architecture.md) | Authoritative frontend: Next.js/React stack, design system, CEO/Worker/Client portals, components. |
+| 4 | *(planned)* | Backend API contracts, Edge Functions, Stripe, integrations, automation, event-driven architecture. |
 
 ## Architecture
 
@@ -17,9 +18,10 @@ AgencyOS.
 | -------- | ----------- |
 | [System Architecture](architecture/system-architecture.md) | High-level platform architecture, layers, and module map. |
 | [Database Architecture (Vol. 2)](architecture/database-architecture.md) | **Authoritative** physical schema, RLS, functions, triggers, views. |
+| [Frontend Architecture (Vol. 3)](architecture/frontend-architecture.md) | **Authoritative** frontend stack, design system, portals, and components. |
 | [Data Model](architecture/data-model.md) | Conceptual entities and relationships (superseded by Vol. 2 for physical detail). |
 | [Permission Matrix](architecture/permission-matrix.md) | Configurable capability-based authorization model. |
-| [Technology Stack](architecture/tech-stack.md) | Ratified data layer + recommended application stack. |
+| [Technology Stack](architecture/tech-stack.md) | Ratified data + frontend stack; open payment/delivery decisions. |
 
 ## Reference
 
