@@ -72,7 +72,7 @@ After applying, create your first workspace + CEO membership by calling the
 | ------ | ----------- | ------ |
 | 1 | Product/architecture docs | ✅ Complete |
 | 2 | Database: schema, RBAC, RLS, functions, triggers | ✅ Complete — 16 migrations, ~40 tables, all domains; validated locally against PostgreSQL 16 |
-| 3 | Next.js app: auth, design system, portals | 🟡 Next |
+| 3 | Next.js app: auth, design system, portals | 🟡 In progress — app scaffolded (`apps/web`): Supabase auth + middleware, design system, role-gated shell, dashboard/clients/projects/invoices wired to RLS; production build passes |
 | 4 | API layer, Edge Functions, integrations | ⬜ |
 | 5 | AI agents, CI/CD, observability, launch | ⬜ |
 

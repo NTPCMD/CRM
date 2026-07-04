@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AgencyOS design tokens (Volume 3) — dark-first cool-slate, blue accent. */
+:root {
+  --bg: #0b1220; --surface: #111827; --card: #1f2937; --card-2: #243044;
+  --border: #2b3648; --border-strong: #374151;
+  --text: #f9fafb; --muted: #9ca3af; --faint: #6b7280;
+  --primary: #3b82f6; --primary-soft: rgba(59, 130, 246, 0.14);
+  --success: #22c55e; --warning: #f59e0b; --danger: #ef4444; --violet: #8b5cf6;
+  --success-soft: rgba(34, 197, 94, 0.14); --warning-soft: rgba(245, 158, 11, 0.14);
+  --danger-soft: rgba(239, 68, 68, 0.14); --violet-soft: rgba(139, 92, 246, 0.14);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+:root[data-theme="light"] {
+  --bg: #f5f7fa; --surface: #ffffff; --card: #ffffff; --card-2: #f3f5f9;
+  --border: #e6e9ef; --border-strong: #d5dbe6;
+  --text: #0b1220; --muted: #5b6472; --faint: #8a93a3;
+  --primary: #2563eb; --primary-soft: rgba(37, 99, 235, 0.10);
+  --success-soft: rgba(22, 163, 74, 0.12); --warning-soft: rgba(217, 119, 6, 0.12);
+  --danger-soft: rgba(220, 38, 38, 0.12); --violet-soft: rgba(124, 58, 237, 0.12);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f5f7fa; --surface: #ffffff; --card: #ffffff; --card-2: #f3f5f9;
+    --border: #e6e9ef; --border-strong: #d5dbe6;
+    --text: #0b1220; --muted: #5b6472; --faint: #8a93a3;
+    --primary: #2563eb; --primary-soft: rgba(37, 99, 235, 0.10);
+    --success-soft: rgba(22, 163, 74, 0.12); --warning-soft: rgba(217, 119, 6, 0.12);
+    --danger-soft: rgba(220, 38, 38, 0.12); --violet-soft: rgba(124, 58, 237, 0.12);
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { padding: 0; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+::selection { background: var(--primary-soft); }
