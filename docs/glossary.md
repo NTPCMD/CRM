@@ -30,4 +30,11 @@
 | **Command Palette**  | The ⌘K / Ctrl+K universal search-and-action surface. |
 | **Role-gated**       | UI (sidebar, screens) filtered by the user's role and effective permissions. |
 | **Server state / UI state** | Data from Supabase (owned by TanStack Query) vs. ephemeral interface state (owned by Zustand). |
+| **AI Gateway**       | Provider-agnostic layer that routes AI requests (default Claude) and handles prompts, context, token accounting, and rate limiting (Vol. 4). |
+| **Event / Event catalogue** | A named domain event (e.g. `invoice.paid`) emitted on state change; subscribers react without tight coupling (Vol. 4). |
+| **Edge Function**    | A small, independently deployable Supabase serverless function (Vol. 4 §7). |
+| **Automation**       | A no-code `Trigger → Conditions → Actions` workflow built on the event catalogue (Vol. 4 §16). |
+| **Adapter**          | The isolation boundary around an external integration (`Connect → Sync → …`) (Vol. 4 §17). |
+| **Modular monolith** | The MVP deployment shape: services as modules in one deployable, extractable later (Vol. 4 §23). |
+| **Idempotency**      | Guarantee that a repeated webhook/request has no additional effect; required for all webhooks (Vol. 4 §18). |
 </content>

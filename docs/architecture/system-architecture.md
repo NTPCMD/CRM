@@ -5,6 +5,15 @@ architecture. It describes the platform layers, the module map, the request
 lifecycle, and the cross-cutting concerns (authorization, realtime, audit) that
 every module inherits.
 
+> **This is the Volume 1 conceptual architecture.** The concrete realizations
+> now live in later volumes: the physical data layer in
+> [Volume 2](database-architecture.md), the frontend in
+> [Volume 3](frontend-architecture.md), and the API / service / event-bus layer
+> in [Volume 4](backend-architecture.md). Where they differ, the later volume is
+> authoritative — notably, Volume 4 formalizes the "API gateway" and "event bus"
+> referenced below as a REST API layer plus an event catalogue, deployed as a
+> **modular monolith first**.
+
 ## 1. Architectural Goals
 
 | Goal            | Implication                                                              |

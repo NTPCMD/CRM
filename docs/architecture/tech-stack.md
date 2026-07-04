@@ -1,12 +1,12 @@
 # AgencyOS — Technology Stack
 
 The **data layer** is ratified by
-[Volume 2: Database Architecture & Supabase Specification](database-architecture.md)
-(**Supabase on PostgreSQL 17**), and the **frontend** by
-[Volume 3: Frontend Architecture & UX](frontend-architecture.md)
-(**Next.js 15 / React 19 / TypeScript**). Only the payment provider and a few
-delivery details remain open. Each choice notes the requirement it serves and
-viable alternatives.
+[Volume 2](database-architecture.md) (**Supabase / PostgreSQL 17**), the
+**frontend** by [Volume 3](frontend-architecture.md)
+(**Next.js 15 / React 19 / TypeScript**), and the **backend, API, and AI/payment
+choices** by [Volume 4](backend-architecture.md) (**REST + event-driven modular
+monolith, provider-agnostic AI Gateway, Stripe**). Only deployment/CI details
+(Volume 5 scope) remain open. Each choice notes the requirement it serves.
 
 ## 1. Guiding Constraints
 
@@ -34,8 +34,11 @@ pending ratification. Volume that fixed each choice is noted.
 | Client state     | **Zustand** (UI) + **TanStack Query** (server) | Ratified (V3) | Clean split of ephemeral vs. server state. |
 | Forms            | **React Hook Form + Zod**         | Ratified (V3)  | Shared validation schemas; autosave/draft support. |
 | Animation        | **Framer Motion**                 | Ratified (V3)  | Honors reduced-motion for accessibility.         |
-| AI Assistant     | Latest Claude models via the Anthropic API | Recommended | Permission-bound assistant.             |
-| Payments         | Pluggable via Integrations module | Recommended    | Keeps provider swappable. Default: Stripe.        |
+| API style        | **Resource-oriented REST** (`/api/*`) with a standard success/error envelope | Ratified (V4) | Predictable, versioned, documented contracts. |
+| Backend shape    | **Modular monolith first** → staged microservices | Ratified (V4) | Simple MVP, clean extraction path (V4 §23). |
+| Eventing         | **Event-driven** (event catalogue → subscribers) | Ratified (V4) | Decouples notifications, activity, analytics, AI. |
+| AI               | **Provider-agnostic AI Gateway**, default latest Claude models | Ratified (V4) | Swap providers without app changes (V4 §8). |
+| Payments         | **Stripe** (initial), pluggable via Integrations | Ratified (V4) | Confirmed initial provider; adapter-isolated.     |
 
 ## 3. Tenancy Strategy
 
@@ -76,7 +79,7 @@ app**, not separate apps:
 
 ## 6. Open Decisions
 
-- Select the default payment/accounting integration providers (V4 scope).
 - Decide monorepo tooling (workspaces, build orchestration).
 - Confirm self-hosted vs. Supabase-hosted deployment target.
+- Production infrastructure, CI/CD, and containerization (Volume 5 scope).
 </content>
