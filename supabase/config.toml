@@ -1,0 +1,18 @@
+# Supabase project configuration.
+# Link with: supabase link --project-ref pzcckoinamekuxiqeqog
+project_id = "pzcckoinamekuxiqeqog"
+
+[db]
+major_version = 17
+
+[db.migrations]
+# Migrations are applied in lexical filename order.
+
+[auth]
+# Portals authenticate through Supabase Auth. Providers (Google, Microsoft,
+# Magic Link, SSO) are configured in the dashboard per Volume 3 §5.
+enable_signup = true
+
+[storage]
+# Buckets are created by migration 0010_storage.sql per Volume 2 §23.
+enabled = true
