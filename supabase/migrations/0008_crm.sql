@@ -104,31 +104,31 @@ alter table public.leads            enable row level security;
 -- clients: staff via crm.*, plus the client's own portal users may read theirs
 create policy clients_select on public.clients for select
   using (app.has_permission(workspace_id, 'crm.view') or app.is_client_contact(id));
-create policy clients_write on public.clients for all
-  using (app.has_permission(workspace_id, 'crm.manage'))
-  with check (app.has_permission(workspace_id, 'crm.manage'));
+select app.write_policies('public.clients',
+  $$app.has_permission(workspace_id, 'crm.manage')$$,
+  $$app.has_permission(workspace_id, 'crm.manage')$$);
 
 create policy client_contacts_select on public.client_contacts for select
   using (app.has_permission(workspace_id, 'crm.view') or app.is_client_contact(client_id));
-create policy client_contacts_write on public.client_contacts for all
-  using (app.has_permission(workspace_id, 'crm.manage'))
-  with check (app.has_permission(workspace_id, 'crm.manage'));
+select app.write_policies('public.client_contacts',
+  $$app.has_permission(workspace_id, 'crm.manage')$$,
+  $$app.has_permission(workspace_id, 'crm.manage')$$);
 
 create policy client_addresses_select on public.client_addresses for select
   using (app.has_permission(workspace_id, 'crm.view') or app.is_client_contact(client_id));
-create policy client_addresses_write on public.client_addresses for all
-  using (app.has_permission(workspace_id, 'crm.manage'))
-  with check (app.has_permission(workspace_id, 'crm.manage'));
+select app.write_policies('public.client_addresses',
+  $$app.has_permission(workspace_id, 'crm.manage')$$,
+  $$app.has_permission(workspace_id, 'crm.manage')$$);
 
 create policy client_tags_select on public.client_tags for select
   using (app.has_permission(workspace_id, 'crm.view'));
-create policy client_tags_write on public.client_tags for all
-  using (app.has_permission(workspace_id, 'crm.manage'))
-  with check (app.has_permission(workspace_id, 'crm.manage'));
+select app.write_policies('public.client_tags',
+  $$app.has_permission(workspace_id, 'crm.manage')$$,
+  $$app.has_permission(workspace_id, 'crm.manage')$$);
 
 -- leads: staff only
 create policy leads_select on public.leads for select
   using (app.has_permission(workspace_id, 'crm.view'));
-create policy leads_write on public.leads for all
-  using (app.has_permission(workspace_id, 'crm.manage'))
-  with check (app.has_permission(workspace_id, 'crm.manage'));
+select app.write_policies('public.leads',
+  $$app.has_permission(workspace_id, 'crm.manage')$$,
+  $$app.has_permission(workspace_id, 'crm.manage')$$);

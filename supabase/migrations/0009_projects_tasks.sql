@@ -238,22 +238,22 @@ create policy projects_delete on public.projects for delete
 
 create policy project_members_select on public.project_members for select
   using (app.can_access_project(project_id));
-create policy project_members_write on public.project_members for all
-  using (app.has_permission(workspace_id,'projects.manage'))
-  with check (app.has_permission(workspace_id,'projects.manage'));
+select app.write_policies('public.project_members',
+  $$app.has_permission(workspace_id,'projects.manage')$$,
+  $$app.has_permission(workspace_id,'projects.manage')$$);
 
 create policy milestones_select on public.milestones for select
   using (app.has_permission(workspace_id,'projects.view') and app.can_access_project(project_id));
-create policy milestones_write on public.milestones for all
-  using (app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id))
-  with check (app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id));
+select app.write_policies('public.milestones',
+  $$app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id)$$,
+  $$app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id)$$);
 
 -- tasks + children: gated by tasks.* (clients lack tasks.view, so hidden).
 create policy tasks_select on public.tasks for select
   using (app.has_permission(workspace_id,'tasks.view') and app.can_access_project(project_id));
-create policy tasks_write on public.tasks for all
-  using (app.has_permission(workspace_id,'tasks.manage') and app.can_access_project(project_id))
-  with check (app.has_permission(workspace_id,'tasks.manage') and app.can_access_project(project_id));
+select app.write_policies('public.tasks',
+  $$app.has_permission(workspace_id,'tasks.manage') and app.can_access_project(project_id)$$,
+  $$app.has_permission(workspace_id,'tasks.manage') and app.can_access_project(project_id)$$);
 
 create policy task_followers_all on public.task_followers for all
   using (exists (select 1 from public.tasks t where t.id = task_id
@@ -270,26 +270,26 @@ create policy task_dependencies_all on public.task_dependencies for all
 create policy checklist_select on public.task_checklist_items for select
   using (app.has_permission(workspace_id,'tasks.view')
     and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id)));
-create policy checklist_write on public.task_checklist_items for all
-  using (app.has_permission(workspace_id,'tasks.manage')
-    and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id)))
-  with check (app.has_permission(workspace_id,'tasks.manage')
-    and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id)));
+select app.write_policies('public.task_checklist_items',
+  $$app.has_permission(workspace_id,'tasks.manage')
+    and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id))$$,
+  $$app.has_permission(workspace_id,'tasks.manage')
+    and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id))$$);
 
 create policy task_comments_select on public.task_comments for select
   using (app.has_permission(workspace_id,'tasks.view')
     and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id)));
-create policy task_comments_write on public.task_comments for all
-  using (app.has_permission(workspace_id,'tasks.view') and author_id = auth.uid())
-  with check (app.has_permission(workspace_id,'tasks.view') and author_id = auth.uid()
-    and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id)));
+select app.write_policies('public.task_comments',
+  $$app.has_permission(workspace_id,'tasks.view') and author_id = auth.uid()$$,
+  $$app.has_permission(workspace_id,'tasks.view') and author_id = auth.uid()
+    and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id))$$);
 
 create policy time_entries_select on public.task_time_entries for select
   using (app.has_permission(workspace_id,'tasks.view')
     and exists (select 1 from public.tasks t where t.id = task_id and app.can_access_project(t.project_id)));
-create policy time_entries_write on public.task_time_entries for all
-  using (app.has_permission(workspace_id,'tasks.view') and profile_id = auth.uid())
-  with check (app.has_permission(workspace_id,'tasks.view') and profile_id = auth.uid());
+select app.write_policies('public.task_time_entries',
+  $$app.has_permission(workspace_id,'tasks.view') and profile_id = auth.uid()$$,
+  $$app.has_permission(workspace_id,'tasks.view') and profile_id = auth.uid()$$);
 
 -- files: staff see all in accessible projects + workspace files; clients see
 -- only client-visible files in their projects.
@@ -300,14 +300,14 @@ create policy files_select on public.files for select
     and (project_id is not null or not app.is_client(workspace_id))
     and (is_client_visible or not app.is_client(workspace_id))
   );
-create policy files_write on public.files for all
-  using (app.has_permission(workspace_id,'files.manage')
-    and (project_id is null or app.can_access_project(project_id)))
-  with check (app.has_permission(workspace_id,'files.manage')
-    and (project_id is null or app.can_access_project(project_id)));
+select app.write_policies('public.files',
+  $$app.has_permission(workspace_id,'files.manage')
+    and (project_id is null or app.can_access_project(project_id))$$,
+  $$app.has_permission(workspace_id,'files.manage')
+    and (project_id is null or app.can_access_project(project_id))$$);
 
 create policy approvals_select on public.approvals for select
   using (app.has_permission(workspace_id,'projects.view') and app.can_access_project(project_id));
-create policy approvals_write on public.approvals for all
-  using (app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id))
-  with check (app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id));
+select app.write_policies('public.approvals',
+  $$app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id)$$,
+  $$app.has_permission(workspace_id,'projects.manage') and app.can_access_project(project_id)$$);

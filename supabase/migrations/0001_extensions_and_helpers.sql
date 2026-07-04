@@ -36,3 +36,27 @@ begin
   );
 end;
 $$;
+
+-- Create INSERT/UPDATE/DELETE policies for a table WITHOUT touching SELECT.
+-- Important: a `FOR ALL` policy's USING clause also applies to SELECT and is
+-- OR-combined with other permissive policies, which would leak read access.
+-- Write policies must therefore be scoped to write commands only; SELECT is
+-- always governed solely by the table's dedicated `_select` policy.
+create or replace function app.write_policies(
+  p_table regclass, p_using text, p_check text
+)
+returns void
+language plpgsql
+as $$
+declare
+  t  text := p_table::text;
+  nm text := replace(t, '.', '_');
+begin
+  execute format('create policy %I on %s for insert with check (%s)',
+                 nm || '_insert', t, p_check);
+  execute format('create policy %I on %s for update using (%s) with check (%s)',
+                 nm || '_update', t, p_using, p_check);
+  execute format('create policy %I on %s for delete using (%s)',
+                 nm || '_delete', t, p_using);
+end;
+$$;

@@ -71,8 +71,8 @@ After applying, create your first workspace + CEO membership by calling the
 | Volume | Deliverable | Status |
 | ------ | ----------- | ------ |
 | 1 | Product/architecture docs | ✅ Complete |
-| 2 | Database: schema, RBAC, RLS, functions, triggers | 🟡 In progress — foundation first |
-| 3 | Next.js app: auth, design system, portals | ⬜ Next |
+| 2 | Database: schema, RBAC, RLS, functions, triggers | ✅ Complete — 16 migrations, ~40 tables, all domains; validated locally against PostgreSQL 16 |
+| 3 | Next.js app: auth, design system, portals | 🟡 Next |
 | 4 | API layer, Edge Functions, integrations | ⬜ |
 | 5 | AI agents, CI/CD, observability, launch | ⬜ |
 
