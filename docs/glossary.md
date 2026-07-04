@@ -3,7 +3,12 @@
 | Term                 | Definition                                                                 |
 | -------------------- | -------------------------------------------------------------------------- |
 | **AgencyOS**         | The operating-system-for-agencies SaaS platform described in these docs.   |
-| **Tenant / Agency**  | The top-level isolation boundary; one customer agency and all its data.    |
+| **Workspace**        | The canonical top-level isolation boundary (Vol. 2); one customer and all its data. Every business row carries `workspace_id`. |
+| **Tenant / Agency**  | Volume 1 term for the isolation boundary; equivalent to **Workspace**.      |
+| **Profile**          | The application user record (1:1 with Supabase `auth.users`) holding identity and preferences. |
+| **Soft delete**      | Marking a row deleted via `deleted_at` instead of removing it; business data is never hard-deleted. |
+| **RLS**              | PostgreSQL Row Level Security; enforces deny-by-default, workspace-scoped access. |
+| **Supabase**         | The ratified backend platform (PostgreSQL 17, Auth, Realtime, Storage, RLS, Edge Functions). |
 | **CEO Portal**       | Administrative experience with full control over the business.             |
 | **Worker Portal**    | Operational experience for employees and contractors.                      |
 | **Client Portal**    | Restricted experience where a client monitors and communicates.            |

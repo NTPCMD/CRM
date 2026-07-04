@@ -1,8 +1,14 @@
-# AgencyOS — Data Model
+# AgencyOS — Data Model (Conceptual)
 
 This document describes the core entities of the shared data layer and their
-relationships. It is a conceptual model, not a physical schema; concrete column
-types and indexes are defined during implementation.
+relationships. It is a **conceptual model**, not a physical schema.
+
+> **Superseded for physical detail by
+> [Volume 2: Database Architecture](database-architecture.md).** Where the two
+> differ, Volume 2 is authoritative. In particular, Volume 2 renames the
+> isolation boundary from **`tenant`** to **`workspace`** (`tenant_id` below ≡
+> `workspace_id`) and mandates UUID keys, standard audit fields, and soft
+> deletes on every table.
 
 ## 1. Principles
 

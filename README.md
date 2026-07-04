@@ -24,9 +24,10 @@ This repository currently holds the product and architecture specification for
 AgencyOS. Start with the documentation index:
 
 - **[docs/README.md](docs/README.md)** — documentation index
-- [Product Requirements — Volume 1](docs/product/prd-volume-1.md)
+- [Volume 1 — Product Requirements & System Architecture](docs/product/prd-volume-1.md)
+- [Volume 2 — Database Architecture & Supabase Specification](docs/architecture/database-architecture.md)
 - [System Architecture](docs/architecture/system-architecture.md)
-- [Data Model](docs/architecture/data-model.md)
+- [Data Model (conceptual)](docs/architecture/data-model.md)
 - [Permission Matrix](docs/architecture/permission-matrix.md)
 - [Technology Stack](docs/architecture/tech-stack.md)
 - [Glossary](docs/glossary.md)
