@@ -5,6 +5,7 @@ import { Card, CardHeader, CardBody, Kpi, PageHeader, Table, Pill, Progress, Emp
 import { Icon } from "@/components/icon";
 import { healthPill } from "@/lib/health";
 import { money, timeAgo } from "@/lib/utils";
+import { AskAi } from "@/components/ask-ai";
 
 export const dynamic = "force-dynamic";
 
@@ -68,12 +69,12 @@ export default async function DashboardPage() {
 
         <div className="grid gap-4 content-start">
           <Card className="bg-[linear-gradient(160deg,var(--primary-soft),transparent)]">
-            <CardHeader title="AI insights" />
+            <CardHeader title="AI assistant" />
             <CardBody>
-              <p className="text-[13px] leading-relaxed m-0 text-muted">
-                Your assistant surfaces risks and next actions here — bounded to what you're
-                permitted to see. Connect the AI Gateway (Volume 4) to enable live insights.
+              <p className="text-[13px] leading-relaxed mt-0 mb-3 text-muted">
+                Ask about your workspace — answers are bounded to what you're permitted to see.
               </p>
+              <AskAi />
             </CardBody>
           </Card>
           <Card>
