@@ -1,20 +1,20 @@
 import Link from "next/link";
-import { listProjects } from "@/lib/queries";
-import { Card, CardBody, PageHeader, Pill, Empty, Button } from "@/components/ui";
-import { Icon } from "@/components/icon";
+import { listProjects, listClients } from "@/lib/queries";
+import { Card, CardBody, PageHeader, Pill, Empty } from "@/components/ui";
 import { healthPill } from "@/lib/health";
 import { money } from "@/lib/utils";
+import { NewProjectButton } from "@/components/forms/new-project";
 
 export const dynamic = "force-dynamic";
 
 export default async function ProjectsPage() {
-  const projects = await listProjects();
+  const [projects, clients] = await Promise.all([listProjects(), listClients()]);
   return (
     <>
       <PageHeader
         title="Projects"
         subtitle={`${projects.length} ${projects.length === 1 ? "project" : "projects"}`}
-        actions={<Button variant="primary"><Icon name="Plus" className="w-4 h-4" /> New project</Button>}
+        actions={<NewProjectButton clients={clients.map((c) => ({ id: c.id, name: c.name }))} />}
       />
       {projects.length ? (
         <div className="grid gap-3.5" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))" }}>

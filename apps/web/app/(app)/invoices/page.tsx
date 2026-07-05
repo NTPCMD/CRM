@@ -1,18 +1,18 @@
-import { listInvoices } from "@/lib/queries";
-import { Card, CardBody, PageHeader, Table, Pill, Empty, Button } from "@/components/ui";
-import { Icon } from "@/components/icon";
+import { listInvoices, listClients } from "@/lib/queries";
+import { Card, CardBody, PageHeader, Table, Pill, Empty } from "@/components/ui";
 import { statusPillTone } from "@/lib/health";
+import { NewInvoiceButton } from "@/components/forms/new-invoice";
 
 export const dynamic = "force-dynamic";
 
 export default async function InvoicesPage() {
-  const invoices = await listInvoices();
+  const [invoices, clients] = await Promise.all([listInvoices(), listClients()]);
   return (
     <>
       <PageHeader
         title="Invoices"
         subtitle={`${invoices.length} ${invoices.length === 1 ? "invoice" : "invoices"}`}
-        actions={<Button variant="primary"><Icon name="Plus" className="w-4 h-4" /> New invoice</Button>}
+        actions={<NewInvoiceButton clients={clients.map((c) => ({ id: c.id, name: c.name }))} />}
       />
       <Card>
         <CardBody className="p-0 py-1.5">

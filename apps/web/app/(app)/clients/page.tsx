@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { listClients } from "@/lib/queries";
-import { Card, CardBody, PageHeader, Table, Pill, Avatar, Empty, Button } from "@/components/ui";
-import { Icon } from "@/components/icon";
+import { Card, CardBody, PageHeader, Table, Pill, Avatar, Empty } from "@/components/ui";
 import { statusPillTone } from "@/lib/health";
+import { NewClientButton } from "@/components/forms/new-client";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +13,7 @@ export default async function ClientsPage() {
       <PageHeader
         title="Clients"
         subtitle={`${clients.length} ${clients.length === 1 ? "client" : "clients"}`}
-        actions={<Button variant="primary"><Icon name="Plus" className="w-4 h-4" /> New client</Button>}
+        actions={<NewClientButton />}
       />
       <Card>
         <CardBody className="p-0 py-1.5">

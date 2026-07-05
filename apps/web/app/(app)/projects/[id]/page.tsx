@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, listTasks } from "@/lib/queries";
-import { Card, CardBody, Pill, Kpi, Empty, Button, Avatar } from "@/components/ui";
+import { Card, CardBody, Pill, Kpi, Empty } from "@/components/ui";
 import { Icon } from "@/components/icon";
 import { healthPill } from "@/lib/health";
 import { money } from "@/lib/utils";
+import { NewTaskButton } from "@/components/forms/new-task";
 
 export const dynamic = "force-dynamic";
 
@@ -38,7 +39,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
           </div>
         </div>
         <div className="flex-1" />
-        <Button variant="primary"><Icon name="Plus" className="w-4 h-4" /> New task</Button>
+        <NewTaskButton projectId={id} />
       </div>
 
       <div className="grid gap-3.5 mb-4" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))" }}>
