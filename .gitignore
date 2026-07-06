@@ -28,6 +28,9 @@ yarn-error.log*
 .vscode/
 *.swp
 
+# TypeScript incremental build cache
+*.tsbuildinfo
+
 # Test / coverage
 coverage/
 .nyc_output/
