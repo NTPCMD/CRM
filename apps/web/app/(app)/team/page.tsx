@@ -1,12 +1,14 @@
-import Link from "next/link";
-import { listMembers } from "@/lib/more-queries";
+import { listMembers, listRoles } from "@/lib/more-queries";
+import { getContext } from "@/lib/session";
 import { PageHeader, Card, CardBody, Table, Pill, Avatar, Empty, Button } from "@/components/ui";
 import { Icon } from "@/components/icon";
+import Link from "next/link";
+import { InviteMemberButton } from "@/components/forms/invite-member";
 
 export const dynamic = "force-dynamic";
 
 export default async function TeamPage() {
-  const members = await listMembers();
+  const [members, ctx, roles] = await Promise.all([listMembers(), getContext(), listRoles()]);
   const nameOf = (p: { first_name: string | null; last_name: string | null; email: string | null } | null) =>
     [p?.first_name, p?.last_name].filter(Boolean).join(" ") || p?.email || "Member";
 
@@ -18,7 +20,7 @@ export default async function TeamPage() {
         actions={
           <>
             <Link href="/permissions"><Button><Icon name="Shield" className="w-4 h-4" /> Permissions</Button></Link>
-            <Button variant="primary"><Icon name="Plus" className="w-4 h-4" /> Invite member</Button>
+            {ctx?.grantsAll && <InviteMemberButton roles={roles} />}
           </>
         }
       />

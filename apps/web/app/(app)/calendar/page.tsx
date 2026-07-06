@@ -1,6 +1,6 @@
 import { listCalendarEvents } from "@/lib/more-queries";
-import { PageHeader, Card, CardBody, Pill, Empty, Button } from "@/components/ui";
-import { Icon } from "@/components/icon";
+import { PageHeader, Card, CardBody, Pill, Empty } from "@/components/ui";
+import { NewEventButton } from "@/components/forms/new-event";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +17,7 @@ export default async function CalendarPage() {
       <PageHeader
         title="Calendar"
         subtitle={`${upcoming.length} upcoming`}
-        actions={<Button variant="primary"><Icon name="Plus" className="w-4 h-4" /> New event</Button>}
+        actions={<NewEventButton />}
       />
       <Card>
         <CardBody className="p-0">

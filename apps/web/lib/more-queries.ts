@@ -72,6 +72,18 @@ export async function listRolesWithPermissions() {
   }>;
 }
 
+export async function listRoles() {
+  const s = await createClient();
+  const { data } = await s
+    .from("roles")
+    .select("id, key, name, grants_all, is_client")
+    .is("deleted_at", null)
+    .order("grants_all", { ascending: false });
+  return (data ?? []) as unknown as Array<{
+    id: string; key: string; name: string; grants_all: boolean; is_client: boolean;
+  }>;
+}
+
 export async function listCalendarEvents() {
   const s = await createClient();
   const { data } = await s
