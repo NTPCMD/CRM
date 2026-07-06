@@ -21,10 +21,17 @@ export interface AppContext {
  * explicit deny) so the UI can gate the same way RLS does.
  */
 export async function getContext(): Promise<AppContext | null> {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Auth resolution must never throw (missing env, network hiccup, bad token) —
+  // a failure here should read as "not signed in", not crash the whole layout.
+  let supabase: Awaited<ReturnType<typeof createClient>>;
+  let user: { id: string; email?: string } | null = null;
+  try {
+    supabase = await createClient();
+    const res = await supabase.auth.getUser();
+    user = res.data.user;
+  } catch {
+    return null;
+  }
   if (!user) return null;
 
   const base: AppContext = {
